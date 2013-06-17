@@ -3,6 +3,7 @@ __author__ = 'pacopablo'
 
 __display_name__ = r'Bottle Service'
 __description__ = r'Bottle.py Server'
+__virtualenv_directory__ = None
 
 import sys
 import os
@@ -12,6 +13,10 @@ import win32serviceutil
 import win32service
 import win32event
 from threading import Thread, Event
+
+if __virtualenv_directory__:
+    activationscript = os.path.join(__virtualenv_directory__, 'Scripts', 'activate_this.py')
+    execfile(activationscript, {'__file__': activationscript})
 
 from bottle import ServerAdapter, run as bottle_run
 

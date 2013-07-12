@@ -34,6 +34,10 @@ Things to change
   `bottle_service.py`.  These correspond to the service display name and
   description.
 
+* If you wish to run in a virtualenv, set the `__virtualenv_directory__` to the
+  path of that file. The service will hackishly monkeypatch its environment on
+  startup.
+
 * Locate the section `# Import your app here` and change the import
   accordingly.
 
@@ -45,8 +49,8 @@ Things to change
 Caveats
 ========
 
-#. Virtualenvs are right out.  I can't think of a way to use Windows NT Services
-   in conjunction with virutal envs.
+#. Virtualenvs are hacky.  The method being used is slightly unreliable and
+   highly unnatural.
 
 #. The service only needs to be installed once.  One can replace the
    script/module containing the app and it will be reloaded the next time the
